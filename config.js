@@ -1,3 +1,4 @@
 
-	export const emojiaddress = '0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0'
+	export const emojiaddress = '0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1'
+	export const emojiOwnership = '0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE'
 	
