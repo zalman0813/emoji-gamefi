@@ -12,12 +12,15 @@ async function main() {
 	await emojiOwnership.deployed();
 	console.log("emojiOwnership contract deployed to: ", emojiOwnership.address);	
 
+	// Transfer all tokens to emojiOwnership (1 million)
+	await emojiToken.transfer(emojiOwnership.address, '1000000000000000000000000')
+
 	let config = `
 	export const emojiaddress = '${emojiToken.address}'
 	export const emojiOwnership = '${emojiOwnership.address}'
 	`
-	let data = JSON.stringify(config)
-	fs.writeFileSync('config.js', JSON.parse(data))
+	let data = JSON.stringify(config);
+	fs.writeFileSync('config.js', JSON.parse(data));
 }
 
 main()
