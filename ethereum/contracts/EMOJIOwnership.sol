@@ -15,7 +15,6 @@ contract EMOJIOwnership is ReentrancyGuard{
 	// Coin Token Swap 
 	function buyTokens(uint256 amount, uint256 price) public payable nonReentrant {
 		require(msg.value == price, 'Please submit the asking price in order to continue');
-		require(rwd.balanceOf(owner) >= amount, "ERC20: transfer amount exceeds balance");
 		rwd.transfer(msg.sender, amount);	
 		payable(owner).transfer(msg.value);
 	}
