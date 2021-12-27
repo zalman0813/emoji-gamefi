@@ -1,6 +1,5 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
-const { Item } = require("semantic-ui-react");
 
 let emojiToken;
 let emojiTokenAddress;
@@ -38,10 +37,13 @@ describe('EMOJIOwnership', () => {
 		const ammount = 100;
 		const etherPrice = ammount*0.0001;
 		const tokenPrice = ethers.utils.parseUnits(etherPrice.toString(), 'ether');
-		await emojiOwnership.connect(buyerAddress).buyTokens( ammount.toString(), tokenPrice, {
+		const beforeEmoTokens = await emojiToken.balanceOf(buyerAddress['address']);
+		console.log('beforeEmoTokens: ', beforeEmoTokens)
+		await emojiOwnership.connect(buyerAddress).exchangeTokens( ammount.toString(), tokenPrice, {
 			value: tokenPrice
 		});
 		const emoTokens = await emojiToken.balanceOf(buyerAddress['address']);
+		console.log('emoTokens: ', emoTokens)
 		expect('100').to.equal(emoTokens);
 	}); 
 });

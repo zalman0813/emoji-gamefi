@@ -13,7 +13,7 @@ contract EMOJIOwnership is ReentrancyGuard{
 	}
 
 	// Coin Token Swap 
-	function buyTokens(uint256 amount, uint256 price) public payable nonReentrant {
+	function exchangeTokens(uint256 amount, uint256 price) public payable nonReentrant {
 		require(msg.value == price, 'Please submit the asking price in order to continue');
 		rwd.transfer(msg.sender, amount);	
 		payable(owner).transfer(msg.value);

@@ -1,7 +1,18 @@
-import '../styles/globals.css'
+import { Container } from 'semantic-ui-react';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import '../styles/globals.css'
+import 'semantic-ui-css/semantic.min.css';
+import Header from "../components/Header";
+
+function EmojiGamfi({ Component, pageProps }) {
+  return (
+    <Container>
+      <Header />
+      <Component {...pageProps} />
+    </Container>
+     
+  )
+  
 }
 
-export default MyApp
+export default EmojiGamfi

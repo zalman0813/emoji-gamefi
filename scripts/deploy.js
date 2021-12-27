@@ -16,8 +16,8 @@ async function main() {
 	await emojiToken.transfer(emojiOwnership.address, '1000000000000000000000000')
 
 	let config = `
-	export const emojiaddress = '${emojiToken.address}'
-	export const emojiOwnership = '${emojiOwnership.address}'
+	export const emojiTokenAddress = '${emojiToken.address}'
+	export const emojiOwnershipAddress = '${emojiOwnership.address}'
 	`
 	let data = JSON.stringify(config);
 	fs.writeFileSync('config.js', JSON.parse(data));
