@@ -38,12 +38,12 @@ describe('EMOJIOwnership', () => {
 		const etherPrice = ammount*0.0001;
 		const tokenPrice = ethers.utils.parseUnits(etherPrice.toString(), 'ether');
 		const beforeEmoTokens = await emojiToken.balanceOf(buyerAddress['address']);
-		console.log('beforeEmoTokens: ', beforeEmoTokens)
+		// console.log('beforeEmoTokens: ', beforeEmoTokens)
 		await emojiOwnership.connect(buyerAddress).exchangeTokens( ammount.toString(), tokenPrice, {
 			value: tokenPrice
 		});
 		const emoTokens = await emojiToken.balanceOf(buyerAddress['address']);
-		console.log('emoTokens: ', emoTokens)
+		// console.log('emoTokens: ', emoTokens)
 		expect('100').to.equal(emoTokens);
 	}); 
 
@@ -53,7 +53,7 @@ describe('EMOJIOwnership', () => {
 		const etherPrice = ammount*0.0001;
 		const tokenPrice = ethers.utils.parseUnits(etherPrice.toString(), 'ether');
 		const beforeEmoTokens = await emojiToken.balanceOf(buyerAddress['address']);
-		console.log('beforeEmoTokens: ', beforeEmoTokens)
+		// console.log('beforeEmoTokens: ', beforeEmoTokens)
 		await emojiOwnership.connect(buyerAddress).exchangeTokens( ammount.toString(), tokenPrice, {
 			value: tokenPrice
 		});
