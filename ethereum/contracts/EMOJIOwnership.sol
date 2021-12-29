@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 import './EMOJIToken.sol';
+import './EMOJIFactory.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
-contract EMOJIOwnership is ReentrancyGuard{
+contract EMOJIOwnership is ReentrancyGuard, EMOJIFactory{
 	EMOJIToken public rwd;
 	address payable owner;
 
-	constructor(EMOJIToken rwd_) public {
+	constructor(EMOJIToken rwd_) EMOJIFactory(msg.sender) {
 		rwd = rwd_;
 		owner = payable(msg.sender);
 	}
@@ -17,6 +18,12 @@ contract EMOJIOwnership is ReentrancyGuard{
 		require(msg.value == price, 'Please submit the asking price in order to continue');
 		rwd.transfer(msg.sender, amount);	
 		payable(owner).transfer(msg.value);
+	}
+
+	function drawTreasure(string memory tokenURI, uint256 amount) public returns(uint) {
+		rwd.transfer(msg.sender, amount);
+		uint256 newItemId = mintToken(tokenURI);
+		return newItemId;
 	}
 
 	// issue rewards
